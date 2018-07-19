@@ -11,6 +11,10 @@ public class Recipe {
     public int servings;
     public String image;
 
+    public String toString(){
+        return "name(id): "  + name + "(" + id + ")";
+    }
+
     public int getId() {
         return id;
     }

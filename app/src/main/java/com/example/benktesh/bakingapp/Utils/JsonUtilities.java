@@ -1,7 +1,12 @@
 package com.example.benktesh.bakingapp.Utils;
 
 
+import android.content.Context;
 import android.util.Log;
+
+import com.example.benktesh.bakingapp.Model.Ingredient;
+import com.example.benktesh.bakingapp.Model.Recipe;
+import com.example.benktesh.bakingapp.Model.Step;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,46 +18,86 @@ import java.util.List;
 @SuppressWarnings("SpellCheckingInspection")
 public class JsonUtilities {
 
-    private static final String TAG = JsonUtils.class.getSimpleName();
+    private static final String TAG = JsonUtilities.class.getSimpleName();
 
-    public static ArrayList<MovieItem> parseMovieJson(String json) {
+    public static ArrayList<Recipe> parseRecipeJson(String json) {
+
+        Log.d(TAG, " entering parseReceipeJson " + json);
+
+        Recipe recipe;
+        ArrayList<Recipe> recipies = new ArrayList<Recipe>();
+
         try {
 
-            MovieItem movie;
-            JSONObject object = new JSONObject(json);
+            JSONArray recipeArray = new JSONArray(json);
 
-            JSONArray resultsArray = new JSONArray(object.optString("results",
-                    "[\"\"]"));
+            int len = recipeArray.length();
+            for (int i = 0; i < len; i++) {
+                recipe = new Recipe();
 
-            System.out.println(resultsArray.toString());
+                JSONObject recipeObject = recipeArray.getJSONObject(i);
 
-            ArrayList<MovieItem> items = new ArrayList<>();
-            for (int i = 0; i < resultsArray.length(); i++) {
-                String current = resultsArray.optString(i, "");
+                recipe.id = recipeObject.optInt("id", 0);
+                recipe.name = recipeObject.optString("name", "");
+                recipe.servings = recipeObject.optInt("servings", 0);
+                recipe.image = recipeObject.optString("image", "");
 
-                JSONObject movieJson = new JSONObject(current);
 
-                String id = movieJson.optString("id", "0");
-                String overview = movieJson.optString("overview", "Not Available");
-                String original_title = movieJson.optString("original_title",
-                        "Not Available");
-                String poster_path = movieJson
-                        .optString("poster_path", "Not Available");
-                String release_date = movieJson.optString("release_date",
-                        "Not Available");
-                String vote_average = movieJson.optString("vote_average", "Not Available");
-                movie = new MovieItem(id, original_title, overview, poster_path, release_date, Double.parseDouble(vote_average),false);
-                items.add(movie);
+
+
+                JSONArray ingredientsArray = new JSONArray(recipeObject.optString("ingredients",
+                        "[\"\"]"));
+                List<Ingredient> ingredients = new ArrayList<>();
+                Ingredient ingredient;
+                for(int j = 0; j < ingredientsArray.length(); j++ )
+                {
+                    ingredient = new Ingredient();
+
+                    JSONObject ingredientObject = ingredientsArray.getJSONObject(j);
+                    ingredient.quantity = ingredientObject.optDouble("quantity", 0);
+                    ingredient.ingredient = ingredientObject.optString("ingredient", "");
+                    ingredient.measure = ingredientObject.optString("measure", "");
+                    ingredients.add(ingredient);
+                }
+                recipe.ingredients = ingredients;
+
+
+
+
+                JSONArray stepsArray = new JSONArray(recipeObject.optString("steps",
+                        "[\"\"]"));
+
+                List<Step> steps = new ArrayList<>();
+                Step step;
+                for(int j = 0; j < stepsArray.length(); j++ )
+                {
+                    step = new Step();
+
+                    JSONObject object = stepsArray.getJSONObject(j);
+                    step.id = object.optInt("id", 0);
+                    step.shortDescription = object.optString("shortDescription", "");
+                    step.description = object.optString("description", "");
+                    step.videoURL = object.optString("videoURL", "");
+                    step.thumbnailURL = object.optString("thumbnailURL", "");
+                    steps.add(step);
+                }
+                recipe.steps = steps;
+
+                recipies.add(recipe);
 
             }
-            return items;
+
+            Log.d(TAG, " exiting parseReceipeJson - results " + recipies.get(0).toString());
+
+            return recipies;
 
         } catch (Exception ex) {
-            Log.e(TAG + "parseMovieJson", "Could not parse json " + json);
+            Log.e(TAG + " parseRecipeJson", "Could not parse json " + ex.toString());
             return null;
         }
     }
 
+    /*
     public static List<MovieReview> parseMovieReviewJson(String json) {
         try {
             MovieReview review;
@@ -116,4 +161,5 @@ public class JsonUtilities {
         }
 
     }
+    */
 }

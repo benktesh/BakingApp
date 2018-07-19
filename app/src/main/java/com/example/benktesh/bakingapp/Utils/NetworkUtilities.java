@@ -7,11 +7,16 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.benktesh.bakingapp.Model.Recipe;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,9 +53,33 @@ public class NetworkUtilities {
 
     }
 
-    public static String getRecipie() {
+    public static ArrayList<Recipe> getRecipie(Context context) {
 
-        return null;
+        BufferedReader reader = null;
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            reader = new BufferedReader(new InputStreamReader(context.getAssets().open("baking.json")));
+            String mLine;
+            while((mLine = reader.readLine()) != null){
+                sb.append(mLine);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log the exception
+                }
+            }
+        }
+
+        return JsonUtilities.parseRecipeJson(sb.toString());
+
     }
 
     @Nullable
