@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ArrayList<Recipe> r = NetworkUtilities.getRecipie(this);
+        ArrayList<Recipe> r = NetworkUtilities.getRecipes(this);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

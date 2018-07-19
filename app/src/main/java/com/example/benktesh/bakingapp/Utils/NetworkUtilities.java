@@ -25,6 +25,8 @@ import java.util.Scanner;
  * Some of the resource for this file were created from Udacity provided content for the students in Google Challenge Scholar's Exercise 2.
  */
 
+//TODO - this is from old code. Needs clearnup perhaps rename
+
 public class NetworkUtilities {
     private static final String TAG = NetworkUtilities.class.getSimpleName();
 
@@ -53,7 +55,10 @@ public class NetworkUtilities {
 
     }
 
-    public static ArrayList<Recipe> getRecipie(Context context) {
+    /*
+    This method returns the list of Recipie from json
+     */
+    public static ArrayList<Recipe> getRecipes(Context context) {
 
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
