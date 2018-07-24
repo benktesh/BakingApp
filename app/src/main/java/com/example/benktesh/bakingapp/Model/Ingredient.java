@@ -1,33 +1,46 @@
 package com.example.benktesh.bakingapp.Model;
 
-public class Ingredient {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Ingredient implements Parcelable {
 
     public double quantity;
     public String measure;
 
-    public double getQuantity() {
-        return quantity;
+    public Ingredient(Parcel in) {
+        quantity = in.readDouble();
+        measure = in.readString();
+        ingredient = in.readString();
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
+    public static final Creator<Ingredient> CREATOR = new Creator<Ingredient>() {
+        @Override
+        public Ingredient createFromParcel(Parcel in) {
+            return new Ingredient(in);
+        }
 
-    public String getMeasure() {
-        return measure;
-    }
+        @Override
+        public Ingredient[] newArray(int size) {
+            return new Ingredient[size];
+        }
+    };
 
-    public void setMeasure(String measure) {
-        this.measure = measure;
-    }
+    public Ingredient() {
 
-    public String getIngredient() {
-        return ingredient;
-    }
-
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
     }
 
     public String ingredient;
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeDouble(quantity);
+        parcel.writeString(measure);
+        parcel.writeString(ingredient);
+    }
 }

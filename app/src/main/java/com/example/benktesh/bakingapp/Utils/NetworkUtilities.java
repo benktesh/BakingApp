@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.example.benktesh.bakingapp.Model.Recipe;
+import com.example.benktesh.bakingapp.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -30,41 +31,56 @@ import java.util.Scanner;
 public class NetworkUtilities {
     private static final String TAG = NetworkUtilities.class.getSimpleName();
 
-    private final static String BASE_URL = "http://image.tmdb.org/t/p/";
-    private final static String BASE_URL_MOVIE = "http://api.themoviedb.org/3/movie/";
-    private final static String BASE_URL_TRAILER_IMAGE = "http://img.youtube.com/vi/"; //5581bd68c3a3685df70000c6
-    private final static String BASE_URL_TRAILER_VIDEO = "https://www.youtube.com/watch?v=";
-
-    //The width of the poster
-    private final static String WIDTH = "w185";
-
-    private final static String API_KEY_PARAM = "?api_key=";
-
-    /**
-     * Builds the URL to fetch poster image.
-     *
-     * @param poster The file for poster.
-     * @return The URL to use to query the GitHub.
-     */
-    public static String buildPosterUrl(String poster) {
-
-        String finalPath = BASE_URL + WIDTH + "/" + poster;
-        Log.d(TAG, "Building PosterURL (" + poster + ") Final: " + finalPath);
-
-        return finalPath;
-
-    }
 
     /*
     This method returns the list of Recipie from json
      */
     public static ArrayList<Recipe> getRecipes(Context context) {
+        Log.d(TAG, "Calling context: " + context);
 
+        String jsonText = null;
+
+        if (!isOnline(context)) {
+            Log.e(TAG, "There is no network connection. Using local file");
+            jsonText = readLocalFile(context);
+
+        }
+        else {
+            //read from network
+            Log.e(TAG, "There is network connection. Getting data from network");
+
+            Uri builtUri = Uri.parse(context.getString(R.string.recipe_URL));
+            URL url =  getUrl(builtUri);
+            try {
+                jsonText =  getResponseFromHttpUrl(getUrl(builtUri), context);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(TAG, Arrays.toString(e.getStackTrace()));
+            }
+            finally {
+                if(jsonText == null) {
+                    Log.e(TAG, "Failed get receipe from network. Using local file");
+                    jsonText = readLocalFile(context);
+                }
+            }
+
+        }
+        if(jsonText == null) {
+
+            return null;
+        }
+        Log.d(TAG, jsonText);
+        return JsonUtilities.parseRecipeJson(jsonText);
+
+    }
+
+    private static String readLocalFile(Context context) {
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
-
         try {
-            reader = new BufferedReader(new InputStreamReader(context.getAssets().open("baking.json")));
+            reader = new BufferedReader(new InputStreamReader(context.getAssets()
+                    .open(context.getString(R.string.local_recipe_file))));
             String mLine;
             while((mLine = reader.readLine()) != null){
                 sb.append(mLine);
@@ -77,13 +93,13 @@ public class NetworkUtilities {
             if (reader != null) {
                 try {
                     reader.close();
+                    Log.d(TAG, "readLocalFile: Done reading local file");
                 } catch (IOException e) {
-                    //log the exception
+                    Log.e(TAG, "IO Error occured while reading local file");
                 }
             }
         }
-
-        return JsonUtilities.parseRecipeJson(sb.toString());
+        return sb.toString();
 
     }
 
@@ -96,49 +112,6 @@ public class NetworkUtilities {
             e.printStackTrace();
         }
         return url;
-    }
-
-    /*
-    This return data of a movie id. Currently we know video and review are datakeys that we know will use.
-     */
-    public static URL buildMovieDataUrl(String id, String dataKey, String apiKey) {
-        //example url http://api.themoviedb.org/3/movie/19404/reviews?api_key=b22b477cd9c23c35e1ebee827d547c38
-        //http://api.themoviedb.org/3/movie/19404/reviews?api_key=b22b477cd9c23c35e1ebee827d547c38
-        String finalPath = BASE_URL_MOVIE + id + "/" + dataKey + API_KEY_PARAM + apiKey;
-
-        Uri builtUri = Uri.parse(finalPath);
-        return getUrl(builtUri);
-    }
-
-    public static String buildYoutubeTrailerImageUrl(String key) {
-        //Example https://img.youtube.com/vi/Y9JvS2TmSvA/1.jpg
-        return BASE_URL_TRAILER_IMAGE + key + "/0.jpg";
-    }
-
-    /*
-    This function generate a random integer between 0 and 3 (inclusive).
-    Youtube has thumbnail images for pictures. This function generate a random integer between 0 and 3 (inclusive)
-    @return String value of randomly generated number
-    */
-    private static String GetRandomPictureId() {
-        int min = 0;
-        int max = 3;
-
-        Random rand = new Random();
-
-        return Integer.toString(rand.nextInt((max - min) + 1) + min);
-    }
-
-
-    public static URL buildDataUrl(String apiKey, String sort) {
-        String finalPath = BASE_URL_MOVIE + sort + API_KEY_PARAM + apiKey;
-        Uri builtUri = Uri.parse(finalPath);
-        return getUrl(builtUri);
-    }
-
-    public static Uri buildVideoUrl(String videoKey) {
-        String path = BASE_URL_TRAILER_VIDEO + videoKey;
-        return Uri.parse(path);
     }
 
 
