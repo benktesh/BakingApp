@@ -2,12 +2,14 @@ package com.example.benktesh.bakingapp.Ui;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.Model.Recipe;
+import com.example.benktesh.bakingapp.R;
 
 import java.util.List;
 
@@ -56,9 +58,14 @@ public class MasterListAdapter extends BaseAdapter {
      */
     public View getView(final int position, View convertView, ViewGroup parent) {
         TextView view;
+        View gridView;
         if (convertView == null) {
-            // If the view is not recycled, this creates a new ImageView to hold an image
-            view = new TextView(mContext);
+
+
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
+            view = viewMyLayout.findViewById(R.id.tv_recipe_card);
+
 
         } else {
             view = (TextView) convertView;
