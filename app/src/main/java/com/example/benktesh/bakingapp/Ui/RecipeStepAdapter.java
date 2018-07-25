@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.Model.Step;
 import com.example.benktesh.bakingapp.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -80,27 +78,6 @@ public class RecipeStepAdapter extends RecyclerView.Adapter<RecipeStepAdapter.Re
             Step step = mItemList.get(listIndex);
             steptv.setText(step.getStepShortDescription());
 
-
-            try {
-                if(step.thumbnailURL.length() > 0) {
-                    Picasso.get()
-                            .load(step.thumbnailURL)
-                            .placeholder(R.drawable.ic_launcher_foreground)
-                            .into(imageView, new Callback() {
-                                @Override
-                                public void onSuccess() {
-                                }
-
-                                @Override
-                                public void onError(Exception e) {
-
-                                }
-                            });
-                }
-            }catch(IllegalArgumentException e)
-            {
-               // holder.stepImage.setImageResource(R.drawable.ic_steps);
-            }
 
 
         }

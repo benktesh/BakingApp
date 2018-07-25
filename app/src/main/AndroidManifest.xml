@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".Ui.RecipeActivity"
             android:label="@string/recipe_label"
+            android:launchMode="singleTop"
+
             android:parentActivityName=".Ui.MainActivity"/>
 
         <activity android:name=".Ui.StepActivity"

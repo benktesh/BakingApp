@@ -16,8 +16,6 @@ public class StepActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         TextView instruction = (TextView) findViewById(R.id.tv_step_instruction);
         Intent intent = getIntent();
