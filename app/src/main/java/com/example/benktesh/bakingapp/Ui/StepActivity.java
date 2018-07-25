@@ -19,14 +19,11 @@ public class StepActivity extends AppCompatActivity {
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-
         TextView instruction = (TextView) findViewById(R.id.tv_step_instruction);
-
         Intent intent = getIntent();
-
         Step step = intent.getParcelableExtra(CURRENT_STEP);
         String title = intent.getStringExtra(CURRENT_STEP_RECIPE);
         setTitle(title);
-        instruction.setText((CharSequence) step.description);
+        instruction.setText(step.description);
     }
 }

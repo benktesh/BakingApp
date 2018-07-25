@@ -113,7 +113,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         // Return the rootView
         //return rootView;
 
-        onSaveInstanceState(savedInstanceState);
+        //onSaveInstanceState(savedInstanceState);
     }
 
     // Setter methods for keeping track of the list images this fragment can display and which image
