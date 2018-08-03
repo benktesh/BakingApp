@@ -3,10 +3,10 @@ package com.example.benktesh.bakingapp.Ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.example.benktesh.bakingapp.Model.Ingredient;
 import com.example.benktesh.bakingapp.Model.Recipe;
@@ -15,6 +15,7 @@ import com.example.benktesh.bakingapp.R;
 import com.example.benktesh.bakingapp.Utils.Helper;
 import com.example.benktesh.bakingapp.databinding.ActivityRecipeBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.benktesh.bakingapp.Ui.MainActivity.CURRENT_RECIPE;
@@ -48,10 +49,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
 
 
 
-        //TODO Get Ingredient and populate
         List<Ingredient> ingredient = mRecipe.ingredients;
-
-        //TODO Get Steps and populate
         List<Step> steps = mRecipe.steps;
 
 
@@ -144,11 +142,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
 
     @Override
     public void OnListItemClick(Step step) {
-        Toast.makeText(getApplicationContext(), "Clicked " + step.id + " - " + step.description, Toast.LENGTH_LONG).show();
-
+        //Toast.makeText(getApplicationContext(), "Clicked " + step.id + " - " + step.description, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), StepActivity.class);
-        intent.putExtra(Helper.CURRENT_STEP, step);
+        //we will pass recipe name, all the steps and current id of the step to intent
         intent.putExtra(Helper.CURRENT_STEP_RECIPE,mRecipeName);
+        intent.putParcelableArrayListExtra(Helper.STEPS, (ArrayList<? extends Parcelable>) mRecipe.steps);
+        intent.putExtra(Helper.STEP_INDEX, step.id);
         startActivity(intent);
     }
 }
