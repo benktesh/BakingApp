@@ -42,6 +42,20 @@ public class StepActivity extends AppCompatActivity implements View.OnClickListe
     private int mStepIndex;
     private String mTitle;
 
+    private boolean isFullScreen;
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        destroyPlayer();
+    }
+
+    private void destroyPlayer(){
+        mExoPlayer.stop();
+        mExoPlayer.release();
+        mExoPlayer = null;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,19 +65,22 @@ public class StepActivity extends AppCompatActivity implements View.OnClickListe
         mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource
                 (getResources(), R.drawable.question_mark));
 
-
         Intent intent = getIntent();
         mStepIndex = intent.getIntExtra(STEP_INDEX, 0);
-
         mTitle = intent.getStringExtra(CURRENT_STEP_RECIPE);
         mSteps = intent.getParcelableArrayListExtra(STEPS);
         mStep = mSteps.get(mStepIndex);
 
-        Button buttonPrevious = (Button) findViewById(R.id.button_previous);
-        buttonPrevious.setOnClickListener(this);
 
+
+        Button buttonPrevious = (Button) findViewById(R.id.button_previous);
         Button buttonNext = (Button) findViewById(R.id.button_next);
-        buttonNext.setOnClickListener(this);
+
+        if(findViewById(R.id.activity_step_instruction_buttons) != null) {
+            buttonPrevious.setOnClickListener(this);
+            buttonNext.setOnClickListener(this);
+        }
+
         initializePlayer();
 
     }
@@ -97,8 +114,12 @@ public class StepActivity extends AppCompatActivity implements View.OnClickListe
 
         TextView instruction = (TextView) findViewById(R.id.tv_step_instruction);
         setTitle(mTitle);
-        instruction.setText(mStep.description);
+        if(instruction != null){
+            instruction.setText(mStep.description);
+        }
 
+
+        //mExoPlayer.release();
         mExoPlayer.prepare(getMediaSource());
         mExoPlayer.setPlayWhenReady(true);
 
