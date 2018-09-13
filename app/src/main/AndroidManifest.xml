@@ -28,7 +28,7 @@
 
             android:parentActivityName=".Ui.MainActivity"/>
 
-        <activity android:name=".Ui.StepActivity"
+        <activity android:name=".Ui.RecipeStepActivity"
             android:label="@string/recipe_label"
             android:parentActivityName=".Ui.RecipeActivity"/>
     </application>

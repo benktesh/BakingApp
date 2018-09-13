@@ -40,7 +40,7 @@ public class NetworkUtilities {
 
         String jsonText = null;
 
-        if (!isOnline(context)) {
+        if (!isOnline(context) && false) {
             Log.e(TAG, "There is no network connection. Using local file");
             jsonText = readLocalFile(context);
 

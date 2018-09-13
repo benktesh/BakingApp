@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.Model.Ingredient;
 import com.example.benktesh.bakingapp.Model.Recipe;
@@ -29,6 +33,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     public RecipeStepAdapter mRecipeStepAdapter;
     private Recipe mRecipe;
     private String mRecipeName;
+    private boolean mHasTwoPanes = false;
 
 
 
@@ -38,16 +43,45 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
+        //mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
+
+        View v = findViewById(R.id.step_details); //if the step details is in this view, then we are in two panes
+        if(v != null)
+        {
+            mHasTwoPanes = true;
+
+            if(savedInstanceState == null) {
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                RecipeListFragment recipeListFragment = new RecipeListFragment();
+
+                //this is for lists
+                fragmentManager.beginTransaction()
+                        .add(R.id.step_list, recipeListFragment)
+                        .commit();
+
+                RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+                //this is for step details
+                fragmentManager.beginTransaction()
+                        .add(R.id.step_details, recipeStepFragment)
+                       .commit();
+
+
+            }
+
+
+        }
+        Log.d(TAG, "mHasTwoPanes:  " + mHasTwoPanes);
+
+
+
 
 
 
         Intent intent = getIntent();
 
-            mRecipe = intent.getParcelableExtra("RECIPE");
-            mRecipeName  = mRecipe == null ? "" : mRecipe.name;
-
-
+        mRecipe = intent.getParcelableExtra("RECIPE");
+        mRecipeName  = mRecipe == null ? "" : mRecipe.name;
 
         List<Ingredient> ingredient = mRecipe.ingredients;
         List<Step> steps = mRecipe.steps;
@@ -60,7 +94,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         mRecipeStepAdapter = new RecipeStepAdapter(steps, this, this);
         stepRecyclerView.setAdapter(mRecipeStepAdapter);
 
-        populateUI();
+        //populateUI();
 
 //        RecyclerView mMovieVideoList = findViewById(R.id.rv_movie_trailers);
 //        LinearLayoutManager layoutManagerVideo = new LinearLayoutManager(this);
@@ -71,7 +105,13 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
 
         //MovieDbHelper movieDbHelper = new MovieDbHelper(this);
         //LoadAdditionalData();
-        //populateUI();
+        try {
+            populateUI();
+        }
+        catch (Exception ex) {
+            Log.e(TAG, ex.getMessage());
+        }
+
 
 
 
@@ -136,18 +176,31 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     private void populateUI() {
 
         setTitle(mRecipeName);
-        mBinding.ingredientMeasureQuantity.setText(mRecipe.getIngredient());
+        TextView measureQantity = findViewById(R.id.ingredient_measure_quantity);
+        measureQantity.setText(mRecipe.getIngredient());
+        //TODO Make mBinding to Work
+        //mBinding.ingredientMeasureQuantity.setText(mRecipe.getIngredient());
 
     }
 
     @Override
     public void OnListItemClick(Step step) {
-        //Toast.makeText(getApplicationContext(), "Clicked " + step.id + " - " + step.description, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getApplicationContext(), StepActivity.class);
-        //we will pass recipe name, all the steps and current id of the step to intent
-        intent.putExtra(Helper.CURRENT_STEP_RECIPE,mRecipeName);
-        intent.putParcelableArrayListExtra(Helper.STEPS, (ArrayList<? extends Parcelable>) mRecipe.steps);
-        intent.putExtra(Helper.STEP_INDEX, step.id);
-        startActivity(intent);
+
+        if(mHasTwoPanes) {
+            Log.d(TAG, "OnListItemClick" + step.getStepShortDescription() );
+
+            //do somethign with fragments
+
+        }
+        else {
+            Intent intent = new Intent(getApplicationContext(), RecipeStepActivity.class);
+            //we will pass recipe name, all the steps and current id of the step to intent
+            intent.putExtra(Helper.CURRENT_STEP_RECIPE,mRecipeName);
+            intent.putParcelableArrayListExtra(Helper.STEPS, (ArrayList<? extends Parcelable>) mRecipe.steps);
+            intent.putExtra(Helper.STEP_INDEX, step.id);
+            startActivity(intent);
+
+        }
+
     }
 }

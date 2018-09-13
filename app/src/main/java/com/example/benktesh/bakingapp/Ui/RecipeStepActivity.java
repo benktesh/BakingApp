@@ -31,9 +31,9 @@ import static com.example.benktesh.bakingapp.Utils.Helper.CURRENT_STEP_RECIPE;
 import static com.example.benktesh.bakingapp.Utils.Helper.STEPS;
 import static com.example.benktesh.bakingapp.Utils.Helper.STEP_INDEX;
 
-public class StepActivity extends AppCompatActivity implements View.OnClickListener {
+public class RecipeStepActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final String TAG = StepActivity.class.getSimpleName();
+    private final String TAG = RecipeStepActivity.class.getSimpleName();
 
     private PlayerView mPlayerView;
     private SimpleExoPlayer mExoPlayer;

@@ -2,3 +2,15 @@ References:
 Reading recipe json file - https://stackoverflow.com/questions/9544737/read-file-from-assets
 Conversion to titlecase -  https://stackoverflow.com/questions/1086123/string-conversion-to-title-case
 
+
+Lets do some design:
+
+MainActivity triggers a view which is composed of list of receipes.
+
+Clicking one of the recipie triggers recipeActivity
+
+Recipe Activity is composed of two fragments
+    - reicipe list
+    - recipe step
+While on two pane mode both fragments are shown side by side. When not, the clicking event in recipe list fragment opens recipe step fragment.
+

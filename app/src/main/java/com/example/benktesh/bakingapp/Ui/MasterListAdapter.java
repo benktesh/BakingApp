@@ -59,29 +59,25 @@ public class MasterListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         TextView view;
         View gridView;
-        if (convertView == null) {
+       // if (convertView == null) {
 
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
             view = viewMyLayout.findViewById(R.id.tv_recipe_card);
+            //View cv = viewMyLayout.findViewById(R.id.card_view);
+            //TextView tv = viewMyLayout.findViewById(R.id.tv_recipe_card);
+            view.setText(mRecipies.get(position).name);
 
 
-        } else {
-            view = (TextView) convertView;
+       // } else
+            {
+            //view = (TextView) convertView;
         }
 
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        lp.setMargins(4, 4, 4, 4);
-//
-//        view.setLayoutParams(lp);
-//        view.setPadding(4, 4, 4,4);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//            view.setBackground(ContextCompat.getDrawable(mContext, R.drawable.red));
-//        }
 
-        // Set the image resource and return the newly created ImageView
-        view.setText(mRecipies.get(position).name);
+
+       // view.setText(mRecipies.get(position).name);
         return view;
     }
 
