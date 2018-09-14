@@ -41,6 +41,4 @@ public class ViewTest {
         onView(withId(R.id.recipe_linear_layout)).check(matches(hasDescendant(withText("Steps"))));
         onView(withId(R.id.recipe_linear_layout)).check(matches(hasDescendant(withText("Step 1: Starting prep"))));
     }
-
-
 }
