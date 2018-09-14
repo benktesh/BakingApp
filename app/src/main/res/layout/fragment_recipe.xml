@@ -9,8 +9,7 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
-    </com.google.android.exoplayer2.ui.PlayerView>
+        android:layout_height="400dp"></com.google.android.exoplayer2.ui.PlayerView>
 
     <TextView
         android:id="@+id/tv_step_instruction"
@@ -19,7 +18,7 @@
         android:background="@drawable/red"
         android:layout_margin="@dimen/double_margin"
         android:padding="@dimen/default_padding"
-        tools:text="Benktesh"/>
+        tools:text="Benktesh" />
 
     <LinearLayout
         android:id="@+id/activity_step_instruction_buttons"

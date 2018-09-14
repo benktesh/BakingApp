@@ -6,51 +6,51 @@
     android:orientation="vertical">
 
     <!--<com.google.android.exoplayer2.ui.PlayerView-->
-        <!--android:id="@+id/playerView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp"></com.google.android.exoplayer2.ui.PlayerView>-->
+    <!--android:id="@+id/playerView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="200dp"></com.google.android.exoplayer2.ui.PlayerView>-->
 
     <!--<TextView-->
-        <!--android:id="@+id/tv_step_instruction"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@drawable/red"-->
-        <!--android:layout_margin="@dimen/double_margin"-->
-        <!--android:padding="@dimen/default_padding"-->
-        <!--tools:text="Benktesh"/>-->
+    <!--android:id="@+id/tv_step_instruction"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:layout_margin="@dimen/double_margin"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--tools:text="Benktesh"/>-->
 
     <!--<LinearLayout-->
-        <!--android:id="@+id/activity_step_instruction_buttons"-->
+    <!--android:id="@+id/activity_step_instruction_buttons"-->
 
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:gravity="center_vertical|bottom"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="center_vertical|bottom"-->
+    <!--android:orientation="horizontal">-->
 
-        <!--<Button-->
-            <!--android:id="@+id/button_previous"-->
-            <!--style="?android:attr/borderlessButtonStyle"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="start|bottom"-->
-            <!--android:layout_margin="@dimen/default_margin"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/red"-->
-            <!--android:padding="@dimen/default_padding"-->
-            <!--android:text="@string/button_previous" />-->
+    <!--<Button-->
+    <!--android:id="@+id/button_previous"-->
+    <!--style="?android:attr/borderlessButtonStyle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="start|bottom"-->
+    <!--android:layout_margin="@dimen/default_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--android:text="@string/button_previous" />-->
 
-        <!--<Button-->
-            <!--android:id="@+id/button_next"-->
-            <!--style="?android:attr/borderlessButtonStyle"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="end|bottom"-->
-            <!--android:layout_margin="@dimen/default_margin"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/red"-->
-            <!--android:padding="@dimen/default_padding"-->
-            <!--android:text="@string/button_next" />-->
+    <!--<Button-->
+    <!--android:id="@+id/button_next"-->
+    <!--style="?android:attr/borderlessButtonStyle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="end|bottom"-->
+    <!--android:layout_margin="@dimen/default_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--android:text="@string/button_next" />-->
     <!--</LinearLayout>-->
 
 </FrameLayout>

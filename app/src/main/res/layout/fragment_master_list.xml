@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <include layout="@layout/toolbar" />
 
-    <GridView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/card_grid_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,8 +19,7 @@
         android:numColumns="1"
         android:padding="16dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp">
-    </GridView>
+        android:verticalSpacing="8dp"></GridView>
 
 
 </LinearLayout>

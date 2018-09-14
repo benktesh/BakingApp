@@ -22,7 +22,6 @@ public class RecipeStepActivity extends AppCompatActivity {
     private SimpleExoPlayer mExoPlayer;
 
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

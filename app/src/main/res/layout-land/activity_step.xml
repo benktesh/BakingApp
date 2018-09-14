@@ -11,58 +11,57 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/playerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.google.android.exoplayer2.ui.PlayerView>
+        android:layout_height="match_parent"></com.google.android.exoplayer2.ui.PlayerView>
 
 
     <!--<ImageView-->
-        <!--android:id="@+id/iv_step_thumbnail"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:adjustViewBounds="true"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--android:background="@drawable/red"-->
-        <!--android:layout_margin="@dimen/default_margin"-->
-        <!--android:padding="@dimen/default_padding"-->
-        <!--android:contentDescription="@string/trailer_content_description"-->
-        <!--/>-->
+    <!--android:id="@+id/iv_step_thumbnail"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="200dp"-->
+    <!--android:adjustViewBounds="true"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:layout_margin="@dimen/default_margin"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--android:contentDescription="@string/trailer_content_description"-->
+    <!--/>-->
 
     <!--<TextView-->
-        <!--android:id="@+id/tv_step_instruction"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@drawable/red"-->
-        <!--android:layout_margin="@dimen/double_margin"-->
-        <!--android:padding="@dimen/default_padding"-->
-        <!--tools:text="Benktesh"/>-->
+    <!--android:id="@+id/tv_step_instruction"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:layout_margin="@dimen/double_margin"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--tools:text="Benktesh"/>-->
 
     <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:orientation="horizontal">-->
-        <!--<Button-->
-            <!--android:layout_gravity="end"-->
-            <!--android:layout_weight="1"-->
-            <!--android:id="@+id/button_previous"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/button_previous"-->
-            <!--android:background="@drawable/red"-->
-            <!--android:layout_margin="@dimen/default_margin"-->
-            <!--android:padding="@dimen/default_padding"-->
-            <!--style="?android:attr/borderlessButtonStyle" />-->
-        <!--<Button-->
-            <!--android:id="@+id/button_next"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_gravity="start"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/button_next"-->
-            <!--android:background="@drawable/red"-->
-            <!--android:layout_margin="@dimen/default_margin"-->
-            <!--android:padding="@dimen/default_padding"-->
-            <!--style="?android:attr/borderlessButtonStyle" />-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:orientation="horizontal">-->
+    <!--<Button-->
+    <!--android:layout_gravity="end"-->
+    <!--android:layout_weight="1"-->
+    <!--android:id="@+id/button_previous"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/button_previous"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:layout_margin="@dimen/default_margin"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--style="?android:attr/borderlessButtonStyle" />-->
+    <!--<Button-->
+    <!--android:id="@+id/button_next"-->
+    <!--android:layout_weight="1"-->
+    <!--android:layout_gravity="start"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/button_next"-->
+    <!--android:background="@drawable/red"-->
+    <!--android:layout_margin="@dimen/default_margin"-->
+    <!--android:padding="@dimen/default_padding"-->
+    <!--style="?android:attr/borderlessButtonStyle" />-->
 
     <!--</LinearLayout>-->
 

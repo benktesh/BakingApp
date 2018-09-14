@@ -19,8 +19,10 @@ import static org.hamcrest.Matchers.not;
 
 
 public class ViewTest {
-    @Rule public ActivityTestRule<MainActivity> mActivityTestRule =
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityTestRule =
             new ActivityTestRule<>(MainActivity.class);
+
     @Test
     public void openMain() {
         onView(withId(R.id.card_grid_view)).check(matches(hasDescendant(withText("Brownies"))));
@@ -39,7 +41,6 @@ public class ViewTest {
         onView(withId(R.id.recipe_linear_layout)).check(matches(hasDescendant(withText("Steps"))));
         onView(withId(R.id.recipe_linear_layout)).check(matches(hasDescendant(withText("Step 1: Starting prep"))));
     }
-
 
 
 }
