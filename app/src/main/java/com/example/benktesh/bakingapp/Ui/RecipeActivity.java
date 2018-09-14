@@ -45,39 +45,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         setContentView(R.layout.activity_recipe);
         //mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
 
-        View v = findViewById(R.id.step_details); //if the step details is in this view, then we are in two panes
-        if(v != null)
-        {
-            mHasTwoPanes = true;
-
-            if(savedInstanceState == null) {
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                RecipeListFragment recipeListFragment = new RecipeListFragment();
-
-                //this is for lists
-                fragmentManager.beginTransaction()
-                        .add(R.id.step_list, recipeListFragment)
-                        .commit();
-
-                RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
-                //this is for step details
-                fragmentManager.beginTransaction()
-                        .add(R.id.step_details, recipeStepFragment)
-                       .commit();
-
-
-            }
-
-
-        }
-        Log.d(TAG, "mHasTwoPanes:  " + mHasTwoPanes);
-
-
-
-
-
-
         Intent intent = getIntent();
 
         mRecipe = intent.getParcelableExtra("RECIPE");
@@ -87,6 +54,32 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         List<Step> steps = mRecipe.steps;
 
 
+        View v = findViewById(R.id.step_detail_container); //if the step details is in this view, then we are in two panes
+        if(v != null)
+        {
+            mHasTwoPanes = true;
+
+            if(savedInstanceState == null) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                RecipeListFragment recipeListFragment = new RecipeListFragment();
+                //this is for lists
+                fragmentManager.beginTransaction()
+                        .add(R.id.step_list, recipeListFragment)
+                        .commit();
+                RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+                //this is for step details
+                fragmentManager.beginTransaction()
+                        .add(R.id.step_detail_container, recipeStepFragment)
+                       .commit();
+            }
+        }
+        Log.d(TAG, "mHasTwoPanes:  " + mHasTwoPanes);
+
+
+
+
+
+
         RecyclerView stepRecyclerView = findViewById(R.id.rv_steps);
         LinearLayoutManager layoutManagerReview = new LinearLayoutManager(this);
         stepRecyclerView.setLayoutManager(layoutManagerReview);
@@ -94,17 +87,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         mRecipeStepAdapter = new RecipeStepAdapter(steps, this, this);
         stepRecyclerView.setAdapter(mRecipeStepAdapter);
 
-        //populateUI();
 
-//        RecyclerView mMovieVideoList = findViewById(R.id.rv_movie_trailers);
-//        LinearLayoutManager layoutManagerVideo = new LinearLayoutManager(this);
-//        mMovieVideoList.setLayoutManager(layoutManagerVideo);
-//        mMovieVideoList.setHasFixedSize(false);
-//        movieVideoAdapter = new MovieVideoAdapter(movieVideoItems, this, this);
-//        mMovieVideoList.setAdapter(movieVideoAdapter);
-
-        //MovieDbHelper movieDbHelper = new MovieDbHelper(this);
-        //LoadAdditionalData();
         try {
             populateUI();
         }
@@ -180,16 +163,41 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         measureQantity.setText(mRecipe.getIngredient());
         //TODO Make mBinding to Work
         //mBinding.ingredientMeasureQuantity.setText(mRecipe.getIngredient());
+        if(mHasTwoPanes) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+            //this is for step details
+
+            if(mRecipe != null) {
+                Step defaultStep = mRecipe.steps.get(0);
+                Log.d(TAG, "step " + defaultStep.description + " " +
+                        defaultStep.getStepShortDescription());
+                recipeStepFragment.setStep(defaultStep);
+            }
+
+           fragmentManager.beginTransaction()
+                    .replace(R.id.step_detail_container, recipeStepFragment)
+                    .commit();
+
+        }
 
     }
 
     @Override
     public void OnListItemClick(Step step) {
+        Log.d(TAG, "Current Step is: " + step.toString());
 
         if(mHasTwoPanes) {
             Log.d(TAG, "OnListItemClick" + step.getStepShortDescription() );
 
-            //do somethign with fragments
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+            //recipeStepFragment.
+            //this is for step details
+            recipeStepFragment.setStep(step);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.step_detail_container, recipeStepFragment)
+                   .commit();
 
         }
         else {
