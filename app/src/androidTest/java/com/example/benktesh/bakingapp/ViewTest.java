@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.not;
 
 
 public class ViewTest {
-    @Rule public ActivityTestRule<MainActivity> mainActivityActivityTestRule =
+    @Rule public ActivityTestRule<MainActivity> mActivityTestRule =
             new ActivityTestRule<>(MainActivity.class);
     @Test
     public void openMain() {
