@@ -35,8 +35,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     private String mRecipeName;
     private boolean mHasTwoPanes = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     //public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,11 +59,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
 
             if(savedInstanceState == null) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                RecipeListFragment recipeListFragment = new RecipeListFragment();
-                //this is for lists
-                fragmentManager.beginTransaction()
-                        .add(R.id.step_list, recipeListFragment)
-                        .commit();
                 RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
                 //this is for step details
                 fragmentManager.beginTransaction()
@@ -75,11 +68,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         }
         Log.d(TAG, "mHasTwoPanes:  " + mHasTwoPanes);
 
-
-
-
-
-
         RecyclerView stepRecyclerView = findViewById(R.id.rv_steps);
         LinearLayoutManager layoutManagerReview = new LinearLayoutManager(this);
         stepRecyclerView.setLayoutManager(layoutManagerReview);
@@ -87,58 +75,13 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         mRecipeStepAdapter = new RecipeStepAdapter(steps, this, this);
         stepRecyclerView.setAdapter(mRecipeStepAdapter);
 
-
         try {
             populateUI();
         }
         catch (Exception ex) {
             Log.e(TAG, ex.getMessage());
         }
-
-
-
-
-        // Get a reference to the TextView in the fragment layout
-
-
-
-        //TODO Ignore this bock for now
-        /*
-        // If a list of image ids exists, set the image resource to the correct item in that list
-        // Otherwise, create a Log statement that indicates that the list was not found
-        if(mImageIds != null){
-            // Set the image resource to the list item at the stored index
-            tex.setImageResource(mImageIds.get(mListIndex));
-
-            // Set a click listener on the image view
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // Increment position as long as the index remains <= the size of the image ids list
-                    if(mListIndex < mImageIds.size()-1) {
-                        mListIndex++;
-                    } else {
-                        // The end of list has been reached, so return to beginning index
-                        mListIndex = 0;
-                    }
-                    // Set the image resource to the new list item
-                    imageView.setImageResource(mImageIds.get(mListIndex));
-                }
-            });
-
-        } else {
-            Log.v(TAG, "This fragment has a null list of image id's");
-        }
-        */
-
-        // Return the rootView
-        //return rootView;
-
-        //onSaveInstanceState(savedInstanceState);
-    }
-
-    // Setter methods for keeping track of the list images this fragment can display and which image
-    // in the list is currently being displayed
+ }
 
     /**
      * Save the current state of this fragment
@@ -147,11 +90,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     public void onSaveInstanceState(Bundle currentState) {
         super.onSaveInstanceState(currentState);
         currentState.putParcelable(CURRENT_RECIPE, mRecipe);
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 

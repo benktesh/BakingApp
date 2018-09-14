@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.Model.Step;
@@ -27,7 +28,7 @@ import com.google.android.exoplayer2.util.Util;
 
 import java.util.ArrayList;
 
-public class RecipeStepFragment extends Fragment {
+public class RecipeStepFragment extends Fragment implements View.OnClickListener {
 
     private static  String TAG = RecipeStepFragment.class.getSimpleName();
 
@@ -53,6 +54,13 @@ public class RecipeStepFragment extends Fragment {
 
         if(mStep != null ) {
             initializePlayer();
+        }
+        if(mRootView.findViewById(R.id.activity_step_instruction_buttons) != null) {
+            Button buttonPrevious = (Button) mRootView.findViewById(R.id.button_previous);
+            Button buttonNext = (Button) mRootView.findViewById(R.id.button_next);
+
+            buttonPrevious.setOnClickListener(this);
+            buttonNext.setOnClickListener(this);
         }
         return mRootView;
 
@@ -114,8 +122,35 @@ public class RecipeStepFragment extends Fragment {
         this.mStep = mStep;
     }
 
-    public void setStepIndex(int mStepIndex) {
-        this.mStepIndex = mStepIndex;
+    public void setStepsIndex (ArrayList<Step> steps, int index) {
+        this.mSteps = steps;
+        this.mStepIndex = index;
+        this.mStep = steps.get(index);
+
     }
 
+    public void onClick(View v) {
+        Log.d(TAG, "onClick: " + v.getId());
+        v.getId();
+        if (v.getId() == R.id.button_previous) {
+            if (mStepIndex > 0) {
+                mStepIndex = mStepIndex - 1;
+                mStep = mSteps.get(mStepIndex);
+                reloadView();
+            } else {
+                Log.d(TAG, " onClick : Previous button clicked. Reached the beginning of the steps"
+                        + mStepIndex + " ( " + mSteps.size() + ")");
+            }
+        } else if (v.getId() == R.id.button_next) {
+            //Toast.makeText(this, "Next", Toast.LENGTH_SHORT).show();
+            if (mStepIndex < mSteps.size() - 1) {
+                mStepIndex = mStepIndex + 1;
+                mStep = mSteps.get(mStepIndex);
+                reloadView();
+            } else {
+                Log.d(TAG, " onClick : Next button clicked. Reached the end of the steps"
+                        + mStepIndex + " ( " + mSteps.size() + ")");
+            }
+        }
+    }
 }

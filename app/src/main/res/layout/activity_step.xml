@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/recipe_step_details"
+    android:id="@+id/step_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/playerView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"></com.google.android.exoplayer2.ui.PlayerView>
+    <!--<com.google.android.exoplayer2.ui.PlayerView-->
+        <!--android:id="@+id/playerView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"></com.google.android.exoplayer2.ui.PlayerView>-->
 
-    <TextView
-        android:id="@+id/tv_step_instruction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/red"
-        android:layout_margin="@dimen/double_margin"
-        android:padding="@dimen/default_padding"
-        tools:text="Benktesh"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_step_instruction"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/red"-->
+        <!--android:layout_margin="@dimen/double_margin"-->
+        <!--android:padding="@dimen/default_padding"-->
+        <!--tools:text="Benktesh"/>-->
 
-    <LinearLayout
-        android:id="@+id/activity_step_instruction_buttons"
+    <!--<LinearLayout-->
+        <!--android:id="@+id/activity_step_instruction_buttons"-->
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical|bottom"
-        android:orientation="horizontal">
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center_vertical|bottom"-->
+        <!--android:orientation="horizontal">-->
 
-        <Button
-            android:id="@+id/button_previous"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|bottom"
-            android:layout_margin="@dimen/default_margin"
-            android:layout_weight="1"
-            android:background="@drawable/red"
-            android:padding="@dimen/default_padding"
-            android:text="@string/button_previous" />
+        <!--<Button-->
+            <!--android:id="@+id/button_previous"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="start|bottom"-->
+            <!--android:layout_margin="@dimen/default_margin"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/red"-->
+            <!--android:padding="@dimen/default_padding"-->
+            <!--android:text="@string/button_previous" />-->
 
-        <Button
-            android:id="@+id/button_next"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/default_margin"
-            android:layout_weight="1"
-            android:background="@drawable/red"
-            android:padding="@dimen/default_padding"
-            android:text="@string/button_next" />
-    </LinearLayout>
+        <!--<Button-->
+            <!--android:id="@+id/button_next"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end|bottom"-->
+            <!--android:layout_margin="@dimen/default_margin"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/red"-->
+            <!--android:padding="@dimen/default_padding"-->
+            <!--android:text="@string/button_next" />-->
+    <!--</LinearLayout>-->
 
-</LinearLayout>
+</FrameLayout>
