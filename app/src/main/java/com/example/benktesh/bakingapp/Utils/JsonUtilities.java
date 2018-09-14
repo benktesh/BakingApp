@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @SuppressWarnings("SpellCheckingInspection")
-public class JsonUtilities {
+class JsonUtilities {
 
     private static final String TAG = JsonUtilities.class.getSimpleName();
 
@@ -24,7 +24,7 @@ public class JsonUtilities {
         Log.d(TAG, " entering parseReceipeJson " + json);
 
         Recipe recipe;
-        ArrayList<Recipe> recipies = new ArrayList<Recipe>();
+        ArrayList<Recipe> recipies = new ArrayList<>();
 
         try {
 
@@ -42,14 +42,11 @@ public class JsonUtilities {
                 recipe.image = recipeObject.optString("image", "");
 
 
-
-
                 JSONArray ingredientsArray = new JSONArray(recipeObject.optString("ingredients",
                         "[\"\"]"));
                 List<Ingredient> ingredients = new ArrayList<>();
                 Ingredient ingredient;
-                for(int j = 0; j < ingredientsArray.length(); j++ )
-                {
+                for (int j = 0; j < ingredientsArray.length(); j++) {
                     ingredient = new Ingredient();
 
                     JSONObject ingredientObject = ingredientsArray.getJSONObject(j);
@@ -61,15 +58,12 @@ public class JsonUtilities {
                 recipe.ingredients = ingredients;
 
 
-
-
                 JSONArray stepsArray = new JSONArray(recipeObject.optString("steps",
                         "[\"\"]"));
 
                 List<Step> steps = new ArrayList<>();
                 Step step;
-                for(int j = 0; j < stepsArray.length(); j++ )
-                {
+                for (int j = 0; j < stepsArray.length(); j++) {
                     step = new Step();
 
                     JSONObject object = stepsArray.getJSONObject(j);

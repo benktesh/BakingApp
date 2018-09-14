@@ -19,14 +19,14 @@ import java.util.List;
 public class RecipeStepAdapter extends RecyclerView.Adapter<RecipeStepAdapter.RecipeStepHolder> {
 
     private static final String TAG = RecipeStepAdapter.class.getSimpleName();
-    private List<Step> mItemList; //holds the review items
+    private final List<Step> mItemList; //holds the review items
     private final Context mContext;
 
 
     final private ListStepClickListener mOnListItemClick;
 
     public RecipeStepAdapter(List<Step> steps,
-                              Context context, ListStepClickListener listener) {
+                             Context context, ListStepClickListener listener) {
         mItemList = steps;
         mContext = context;
         mOnListItemClick = listener;

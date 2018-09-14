@@ -1,6 +1,5 @@
 package com.example.benktesh.bakingapp.Ui;
 
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 
 public class RecipeStepFragment extends Fragment implements View.OnClickListener {
 
-    private static  String TAG = RecipeStepFragment.class.getSimpleName();
+    private static final String TAG = RecipeStepFragment.class.getSimpleName();
 
     private PlayerView mPlayerView;
     private SimpleExoPlayer mExoPlayer;
@@ -46,18 +45,18 @@ public class RecipeStepFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mRootView =  inflater.inflate(R.layout.fragment_recipe, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_recipe, container, false);
 
-        mPlayerView = (PlayerView) mRootView.findViewById(R.id.playerView);
+        mPlayerView = mRootView.findViewById(R.id.playerView);
 
         Log.d(TAG, "onCreateView is step null?: " + mStep == null ? " YES" : " NO");
 
-        if(mStep != null ) {
+        if (mStep != null) {
             initializePlayer();
         }
-        if(mRootView.findViewById(R.id.activity_step_instruction_buttons) != null) {
-            Button buttonPrevious = (Button) mRootView.findViewById(R.id.button_previous);
-            Button buttonNext = (Button) mRootView.findViewById(R.id.button_next);
+        if (mRootView.findViewById(R.id.activity_step_instruction_buttons) != null) {
+            Button buttonPrevious = mRootView.findViewById(R.id.button_previous);
+            Button buttonNext = mRootView.findViewById(R.id.button_next);
 
             buttonPrevious.setOnClickListener(this);
             buttonNext.setOnClickListener(this);
@@ -66,11 +65,11 @@ public class RecipeStepFragment extends Fragment implements View.OnClickListener
 
     }
 
-    public void reloadView() {
+    private void reloadView() {
 
-        TextView instruction = (TextView) mRootView.findViewById(R.id.tv_step_instruction);
+        TextView instruction = mRootView.findViewById(R.id.tv_step_instruction);
         //setTitle(mTitle);
-        if(instruction != null){
+        if (instruction != null) {
             instruction.setText(mStep.description);
         }
 
@@ -96,7 +95,7 @@ public class RecipeStepFragment extends Fragment implements View.OnClickListener
 
     }
 
-    public void initializePlayer() {
+    private void initializePlayer() {
 
         if (mExoPlayer == null) {
             // Create an instance of the ExoPlayer.
@@ -108,21 +107,11 @@ public class RecipeStepFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private void destroyPlayer(){
-        mExoPlayer.stop();
-        mExoPlayer.release();
-        mExoPlayer = null;
-    }
-
-    public void setSteps(ArrayList<Step> mSteps) {
-        this.mSteps = mSteps;
-    }
-
     public void setStep(Step mStep) {
         this.mStep = mStep;
     }
 
-    public void setStepsIndex (ArrayList<Step> steps, int index) {
+    public void setStepsIndex(ArrayList<Step> steps, int index) {
         this.mSteps = steps;
         this.mStepIndex = index;
         this.mStep = steps.get(index);

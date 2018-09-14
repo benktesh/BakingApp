@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-public class Recipe implements Parcelable{
+public class Recipe implements Parcelable {
 
     public int id;
     public String name;
@@ -14,7 +14,7 @@ public class Recipe implements Parcelable{
     public int servings;
     public String image;
 
-    public Recipe(Parcel in) {
+    private Recipe(Parcel in) {
         id = in.readInt();
         name = in.readString();
         ingredients = in.createTypedArrayList(Ingredient.CREATOR);
@@ -54,15 +54,13 @@ public class Recipe implements Parcelable{
         }
     };
 
-    public String getIngredient()
-    {
+    public String getIngredient() {
         String result = "";
         int index = 0;
-        if(ingredients != null && ingredients.size() > 0){
+        if (ingredients != null && ingredients.size() > 0) {
 
 
-            for (Ingredient ing: ingredients)
-            {
+            for (Ingredient ing : ingredients) {
                 index++;
                 result = result + String.valueOf(index) + " " + ing.ingredient + " - " + String.valueOf(ing.quantity) + " " + ing.measure + "\n";
 
@@ -71,8 +69,8 @@ public class Recipe implements Parcelable{
         return result;
     }
 
-    public String toString(){
-        return "name(id): "  + name + "(" + id + ")";
+    public String toString() {
+        return "name(id): " + name + "(" + id + ")";
     }
 
 }

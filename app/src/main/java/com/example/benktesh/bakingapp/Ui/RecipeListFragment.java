@@ -5,13 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.R;
 
 public class RecipeListFragment extends Fragment {
 
-    public RecipeListFragment(){
+    public RecipeListFragment() {
 
     }
 
@@ -24,6 +23,6 @@ public class RecipeListFragment extends Fragment {
 
         //TextView tv = rootView.findViewById(R.id.ingredient_measure_quantity);
         //tv.setText("HELLO BENKTESH");
-        return  rootView;
+        return rootView;
     }
 }

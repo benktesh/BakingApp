@@ -3,14 +3,14 @@ package com.example.benktesh.bakingapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Step implements Parcelable{
+public class Step implements Parcelable {
     public int id;
     public String shortDescription;
     public String description;
     public String videoURL;
     public String thumbnailURL;
 
-    public Step(Parcel in) {
+    private Step(Parcel in) {
         id = in.readInt();
         shortDescription = in.readString();
         description = in.readString();

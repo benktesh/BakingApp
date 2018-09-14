@@ -26,14 +26,14 @@ import java.util.Scanner;
  * Some of the resource for this file were created from Udacity provided content for the students in Google Challenge Scholar's Exercise 2.
  */
 
-//TODO - this is from old code. Needs clearnup perhaps rename
+//TODO - this is from old code. Needs cleanup perhaps rename
 
 public class NetworkUtilities {
     private static final String TAG = NetworkUtilities.class.getSimpleName();
 
 
     /*
-    This method returns the list of Recipie from json
+    This method returns the list of Recipe from json
      */
     public static ArrayList<Recipe> getRecipes(Context context) {
         Log.d(TAG, "Calling context: " + context);
@@ -44,29 +44,27 @@ public class NetworkUtilities {
             Log.e(TAG, "There is no network connection. Using local file");
             jsonText = readLocalFile(context);
 
-        }
-        else {
+        } else {
             //read from network
             Log.e(TAG, "There is network connection. Getting data from network");
 
             Uri builtUri = Uri.parse(context.getString(R.string.recipe_URL));
-            URL url =  getUrl(builtUri);
+            URL url = getUrl(builtUri);
             try {
-                jsonText =  getResponseFromHttpUrl(getUrl(builtUri), context);
+                jsonText = getResponseFromHttpUrl(getUrl(builtUri), context);
 
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.e(TAG, Arrays.toString(e.getStackTrace()));
-            }
-            finally {
-                if(jsonText == null) {
-                    Log.e(TAG, "Failed get receipe from network. Using local file");
+            } finally {
+                if (jsonText == null) {
+                    Log.e(TAG, "Failed get recipe from network. Using local file");
                     jsonText = readLocalFile(context);
                 }
             }
 
         }
-        if(jsonText == null) {
+        if (jsonText == null) {
 
             return null;
         }
@@ -82,14 +80,12 @@ public class NetworkUtilities {
             reader = new BufferedReader(new InputStreamReader(context.getAssets()
                     .open(context.getString(R.string.local_recipe_file))));
             String mLine;
-            while((mLine = reader.readLine()) != null){
+            while ((mLine = reader.readLine()) != null) {
                 sb.append(mLine);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             if (reader != null) {
                 try {
                     reader.close();
@@ -122,7 +118,7 @@ public class NetworkUtilities {
      * @return The contents of the HTTP response.
      * @throws IOException Related to network and stream reading
      */
-    public static String getResponseFromHttpUrl(URL url, Context context) throws IOException {
+    private static String getResponseFromHttpUrl(URL url, Context context) throws IOException {
         if (!isOnline(context)) {
             Log.e(TAG, "There is no network connection");
             return null;

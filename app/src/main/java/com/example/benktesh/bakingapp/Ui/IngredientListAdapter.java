@@ -12,16 +12,16 @@ import com.example.benktesh.bakingapp.Model.Ingredient;
 
 import java.util.List;
 
-public class IngredientListAdapter extends BaseAdapter {
+class IngredientListAdapter extends BaseAdapter {
 
-    private String TAG = IngredientListAdapter.class.getSimpleName();
+    private final String TAG = IngredientListAdapter.class.getSimpleName();
 
     // Keeps track of the context and list of images to display
-    private Context mContext;
-    private List<Ingredient> mItems;
+    private final Context mContext;
+    private final List<Ingredient> mItems;
 
 
-    public IngredientListAdapter(Context context, List<Ingredient> ingredients) {
+    private IngredientListAdapter(Context context, List<Ingredient> ingredients) {
         mContext = context;
         mItems = ingredients;
     }

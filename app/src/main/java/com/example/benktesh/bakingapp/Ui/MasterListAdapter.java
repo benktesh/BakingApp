@@ -15,13 +15,13 @@ import java.util.List;
 
 
 // Custom adapter class that displays a list of Android-Me images in a GridView
-public class MasterListAdapter extends BaseAdapter {
+class MasterListAdapter extends BaseAdapter {
 
-    private String TAG = MasterListAdapter.class.getSimpleName();
+    private final String TAG = MasterListAdapter.class.getSimpleName();
 
     // Keeps track of the context and list of images to display
-    private Context mContext;
-    private List<Recipe> mRecipies;
+    private final Context mContext;
+    private final List<Recipe> mRecipies;
 
     /**
      * Constructor method
@@ -59,25 +59,15 @@ public class MasterListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         TextView view;
         View gridView;
-       // if (convertView == null) {
+        // if (convertView == null) {
 
 
-            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
-            view = viewMyLayout.findViewById(R.id.tv_recipe_card);
-            //View cv = viewMyLayout.findViewById(R.id.card_view);
-            //TextView tv = viewMyLayout.findViewById(R.id.tv_recipe_card);
-            view.setText(mRecipies.get(position).name);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
+        view = viewMyLayout.findViewById(R.id.tv_recipe_card);
 
+        view.setText(mRecipies.get(position).name);
 
-       // } else
-            {
-            //view = (TextView) convertView;
-        }
-
-
-
-       // view.setText(mRecipies.get(position).name);
         return view;
     }
 

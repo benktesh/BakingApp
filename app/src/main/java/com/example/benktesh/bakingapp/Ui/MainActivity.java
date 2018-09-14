@@ -9,15 +9,11 @@ import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.R;
 import com.example.benktesh.bakingapp.Ui.MasterListFragment.OnRecipeClickListener;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity implements OnRecipeClickListener {
 
     private final String TAG = MainActivity.class.getSimpleName();
 
-    public static String CURRENT_RECIPE = "RECIPE";
-
-    public ArrayList<Recipe> mRecipies = null;
+    public static final String CURRENT_RECIPE = "RECIPE";
 
 
     @Override
@@ -27,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements OnRecipeClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
 
 
     @Override

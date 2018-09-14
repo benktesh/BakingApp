@@ -23,13 +23,13 @@ import java.util.ArrayList;
 public class MasterListFragment extends Fragment {
 
     private static final String TAG = MasterListFragment.class.getSimpleName();
-    ArrayList<Recipe> mRecipies = null;
-    MasterListAdapter mAdapter;
-    GridView gridView;
+    private ArrayList<Recipe> mRecipies = null;
+    private MasterListAdapter mAdapter;
+    private GridView gridView;
 
 
     // Define a new interface OnImageClickListener that triggers a callback in the host activity
-    OnRecipeClickListener mCallback;
+    private OnRecipeClickListener mCallback;
 
     private Context context = getContext();
 
