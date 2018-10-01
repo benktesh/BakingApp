@@ -1,5 +1,7 @@
 package com.example.benktesh.bakingapp.Ui;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.R;
 import com.example.benktesh.bakingapp.Ui.MasterListFragment.OnRecipeClickListener;
+import com.example.benktesh.bakingapp.Utils.BakingAppWidgetProvider;
 
 public class MainActivity extends AppCompatActivity implements OnRecipeClickListener {
 
@@ -32,9 +35,16 @@ public class MainActivity extends AppCompatActivity implements OnRecipeClickList
         // Put this information in a Bundle and attach it to an Intent that will launch an AndroidMeActivity
         Bundle b = new Bundle();
         // Attach the Bundle to an intent
+
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BakingAppWidgetProvider.class));
+        BakingAppWidgetProvider.updateAppWidget(this, appWidgetManager, appWidgetIds, recipe);
+
         Intent intent = new Intent(this, RecipeActivity.class);
         intent.putExtra(CURRENT_RECIPE, recipe);
         startActivity(intent);
+
+
     }
 
 

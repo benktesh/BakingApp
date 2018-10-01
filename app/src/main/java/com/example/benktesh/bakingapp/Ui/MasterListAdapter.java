@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -66,9 +68,23 @@ class MasterListAdapter extends BaseAdapter {
         View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
         view = viewMyLayout.findViewById(R.id.tv_recipe_card);
 
-        view.setText(mRecipies.get(position).name);
+        Recipe recipe = mRecipies.get(position);
 
-        return view;
+        ImageView iv = viewMyLayout.findViewById(R.id.iv_recipe);
+        if (recipe != null) {
+            view.setText(recipe.name);
+
+            Picasso.get()
+                    .load(recipe.image)
+                            //"http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png")
+
+                    .resize(140, 140)
+                    .centerCrop()
+                    .into(iv);
+        }
+
+
+        return viewMyLayout;
     }
 
 }

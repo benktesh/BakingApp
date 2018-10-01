@@ -14,3 +14,5 @@ Recipe Activity is composed of two fragments
     - recipe step
 While on two pane mode both fragments are shown side by side. When not, the clicking event in recipe list fragment opens recipe step fragment.
 
+Bitmap string conversion
+http://vinayandroid.blogspot.com/2015/02/convert-image-bitmap-to-string.html

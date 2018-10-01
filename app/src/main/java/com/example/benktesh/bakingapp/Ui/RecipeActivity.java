@@ -46,11 +46,16 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         mRecipe = intent.getParcelableExtra("RECIPE");
         mRecipeName = mRecipe == null ? "" : mRecipe.name;
 
-        List<Ingredient> ingredient = mRecipe.ingredients;
-        List<Step> steps = mRecipe.steps;
+        List<Ingredient> ingredient =mRecipe != null ? mRecipe.ingredients : null;
+        List<Step> steps  = mRecipe != null ? mRecipe.steps : null;
 
+
+        Log.d(TAG, "Before loading step_detail_container");
 
         View v = findViewById(R.id.step_detail_container); //if the step details is in this view, then we are in two panes
+
+        Log.d(TAG, "After loading step_detail_container ");
+
         if (v != null) {
             mHasTwoPanes = true;
 

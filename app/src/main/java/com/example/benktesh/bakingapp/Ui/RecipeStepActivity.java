@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.benktesh.bakingapp.Model.Step;
 import com.example.benktesh.bakingapp.R;
@@ -45,13 +46,22 @@ public class RecipeStepActivity extends AppCompatActivity {
         Step mStep = mSteps.get(mStepIndex);
 
         if (savedInstanceState == null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
-            //this is for step details
-            recipeStepFragment.setStepsIndex(mSteps, mStepIndex);
-            fragmentManager.beginTransaction()
-                    .add(R.id.step_detail_container, recipeStepFragment)
-                    .commit();
+            Log.e(TAG, "onCreate: savedInstanceState is null");
+            try {
+
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
+                //this is for step details
+                recipeStepFragment.setStepsIndex(mSteps, mStepIndex);
+                fragmentManager.beginTransaction()
+                        .add(R.id.step_detail_container, recipeStepFragment)
+                        .commit();
+            }
+            catch (Exception ex) {
+                Log.e(TAG, ex.toString());
+
+            }
         }
     }
 }

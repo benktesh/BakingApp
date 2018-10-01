@@ -2,9 +2,10 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/baking_app_widget"
     android:initialLayout="@layout/baking_app_widget"
-    android:minHeight="40dp"
-    android:minWidth="40dp"
+    android:minHeight="@dimen/widget_minHeight"
+    android:minWidth="@dimen/widget_minWidth"
     android:previewImage="@drawable/baking"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
+
     android:widgetCategory="home_screen"></appwidget-provider>

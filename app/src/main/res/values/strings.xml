@@ -10,6 +10,6 @@
     <string name="trailer_content_description">trailer content description</string>
     <string name="button_previous">Previous</string>
     <string name="button_next">Next</string>
-    <string name="appwidget_text">Baking Incredients</string>
+    <string name="appwidget_text">Ingredients:</string>
     <string name="add_widget">Add widget</string>
 </resources>

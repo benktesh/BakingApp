@@ -1,16 +1,20 @@
 package com.example.benktesh.bakingapp.Utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Base64;
 import android.util.Log;
 
 import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.R;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -71,6 +75,61 @@ public class NetworkUtilities {
         Log.d(TAG, jsonText);
         return JsonUtilities.parseRecipeJson(jsonText);
 
+    }
+
+    public static String getBitmapString(String fileUrl) {
+        String bitmapString = null;
+        try {
+            URL myFileUrl = new URL (fileUrl);
+            HttpURLConnection conn =
+                    (HttpURLConnection) myFileUrl.openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+
+            InputStream is = conn.getInputStream();
+            Bitmap temp = BitmapFactory.decodeStream(is);
+            bitmapString = encodeToBase64(temp);
+
+        } catch (IOException e) {
+            Log.e(TAG, "getMap:" + e.getStackTrace());
+        }
+        return bitmapString;
+    }
+
+
+    public static String encodeToBase64(Bitmap image)
+    {
+        if(image == null)
+            return null;
+        Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
+        int quality = 100;
+        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
+        image.compress(compressFormat, quality, byteArrayOS);
+        return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
+    }
+
+    public static Bitmap decodeBase64(String input)
+    {
+        if(input == null || input.isEmpty())
+            return null;
+        byte[] decodedBytes = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+
+
+
+    public static Bitmap GetBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (NullPointerException e) {
+            e.getMessage();
+            return null;
+        } catch (OutOfMemoryError e) {
+            return null;
+        }
     }
 
     private static String readLocalFile(Context context) {
