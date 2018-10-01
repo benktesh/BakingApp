@@ -1,6 +1,5 @@
 package com.example.benktesh.bakingapp.Utils;
 
-
 import android.util.Log;
 
 import com.example.benktesh.bakingapp.Model.Ingredient;
@@ -40,7 +39,6 @@ class JsonUtilities {
                 recipe.name = recipeObject.optString("name", "");
                 recipe.servings = recipeObject.optInt("servings", 0);
                 recipe.image = recipeObject.optString("image", "");
-
 
                 JSONArray ingredientsArray = new JSONArray(recipeObject.optString("ingredients",
                         "[\"\"]"));
