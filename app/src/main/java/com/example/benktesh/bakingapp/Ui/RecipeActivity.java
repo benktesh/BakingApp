@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.benktesh.bakingapp.Model.Ingredient;
 import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.Model.Step;
 import com.example.benktesh.bakingapp.R;

@@ -49,7 +49,7 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
             if (recipe.image != null && !recipe.image.isEmpty()) {
                 Picasso.get()
                         .load(recipe.image)
-                        .resize(40,40)
+                        .resize(40, 40)
                         .error(R.drawable.bakingimage)
                         .into(views, R.id.widget_image, appWidgetIds);
 
@@ -79,7 +79,7 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
     private static void loadDefaultImage(int[] appWidgetIds, RemoteViews views) {
         Picasso.get()
                 .load(R.drawable.bakingimage)
-                .resize(40,40)
+                .resize(40, 40)
                 .error(R.drawable.bakingimage)
                 .into(views, R.id.widget_image, appWidgetIds);
     }

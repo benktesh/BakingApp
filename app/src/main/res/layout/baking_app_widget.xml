@@ -4,8 +4,7 @@
     android:layout_gravity="start"
     android:orientation="vertical"
     android:layout_margin="@dimen/widget_margin"
-    android:padding="@dimen/widget_margin"
-    >
+    android:padding="@dimen/widget_margin">
 
     <ImageView
         android:id="@+id/widget_image"
@@ -40,6 +39,7 @@
         android:textColor="#ffffff"
         android:textSize="10sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/appwidget_ingredients"
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:contentDescription="@string/appwidget_text"
         android:text="@string/appwidget_text"
         android:textColor="#ffffff"
-        android:textSize="10sp"  />
+        android:textSize="10sp" />
 
 
 </LinearLayout>
