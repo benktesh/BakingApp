@@ -5,17 +5,18 @@
     android:background="#09C"
     android:orientation="vertical"
     android:layout_margin="@dimen/widget_margin"
-    android:padding="@dimen/widget_margin">
+    android:padding="@dimen/widget_margin"
+    >
 
     <ImageView
         android:id="@+id/widget_image"
         android:layout_width="@dimen/widget_minWidth"
         android:layout_height="@dimen/widget_minHeight"
         android:layout_gravity="start"
-
+        android:onClick="onClickHandler"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:onClick="onClickHandler" />
+         />
 
     <TextView
         android:id="@+id/appwidget_recipe_label"

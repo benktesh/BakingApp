@@ -74,16 +74,23 @@ class MasterListAdapter extends BaseAdapter {
         if (recipe != null) {
             view.setText(recipe.name);
 
-            Picasso.get()
-                    .load(recipe.image)
-                            //"http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png")
-
-                    .resize(140, 140)
-                    .centerCrop()
-                    .into(iv);
+            if (recipe.image != null && !recipe.image.isEmpty()) {
+                Picasso.get()
+                        .load(recipe.image)
+                        //"http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png")
+                        .placeholder(R.drawable.bakingimage)
+                        .resize(100, 100)
+                        .centerCrop()
+                        .into(iv);
+            } else {
+                Picasso.get()
+                        .load(R.drawable.bakingimage)
+                        .placeholder(R.drawable.bakingimage)
+                        .resize(50, 50)
+                        .centerCrop()
+                        .into(iv);
+            }
         }
-
-
         return viewMyLayout;
     }
 

@@ -30,6 +30,9 @@ public class RecipeStepActivity extends AppCompatActivity {
     }
 
     private void destroyPlayer() {
+        if (mExoPlayer == null) {
+            return;
+        }
         mExoPlayer.stop();
         mExoPlayer.release();
         mExoPlayer = null;
@@ -48,8 +51,6 @@ public class RecipeStepActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Log.e(TAG, "onCreate: savedInstanceState is null");
             try {
-
-
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
                 //this is for step details
@@ -57,10 +58,8 @@ public class RecipeStepActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction()
                         .add(R.id.step_detail_container, recipeStepFragment)
                         .commit();
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 Log.e(TAG, ex.toString());
-
             }
         }
     }
