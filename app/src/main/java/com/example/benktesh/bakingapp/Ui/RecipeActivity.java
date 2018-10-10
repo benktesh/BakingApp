@@ -37,13 +37,18 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     protected void onCreate(Bundle savedInstanceState) {
         //public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        Log.d(TAG, "Creating ReceipeActivity");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         //mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
 
         Intent intent = getIntent();
 
+
         mRecipe = intent.getParcelableExtra("RECIPE");
+
+        Log.d(TAG, "Received Recipe: " + mRecipe != null ? mRecipe.name : "Empty");
         mRecipeName = mRecipe == null ? "" : mRecipe.name;
 
         List<Ingredient> ingredient =mRecipe != null ? mRecipe.ingredients : null;
@@ -82,6 +87,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         } catch (Exception ex) {
             Log.e(TAG, ex.getMessage());
         }
+
+        Log.d(TAG, "Creating ReceipeActivity");
     }
 
     /**

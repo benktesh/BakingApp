@@ -31,7 +31,6 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
             ingredients = recipe.getIngredientsForWidget();
         }
 
-
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_app_widget);
 
@@ -44,9 +43,8 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
         // Bitmap image = NetworkUtilities.decodeBase64(recipe.image);
 
         views.getLayoutId();
-        Log.d(TAG, "updateAppWidget: recipe.iamge = " + recipe.image);
+        Log.d(TAG, "updateAppWidget: recipe.image = " + recipe.image);
         if (recipe.image != null) {
-
 
             if (recipe.image != null && !recipe.image.isEmpty()) {
                 Picasso.get()

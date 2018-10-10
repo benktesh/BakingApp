@@ -19,6 +19,6 @@
         android:numColumns="1"
         android:padding="16dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp"></GridView>
+        android:verticalSpacing="8dp" />
 
 </LinearLayout>
