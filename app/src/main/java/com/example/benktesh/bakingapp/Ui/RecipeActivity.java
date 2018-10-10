@@ -44,9 +44,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         Log.d(TAG, "Received Recipe: " + mRecipe != null ? mRecipe.name : "Empty");
         mRecipeName = mRecipe == null ? "" : mRecipe.name;
 
-        List<Ingredient> ingredient = mRecipe != null ? mRecipe.ingredients : null;
         List<Step> steps = mRecipe != null ? mRecipe.steps : null;
-
 
         Log.d(TAG, "Before loading step_detail_container");
 

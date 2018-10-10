@@ -53,7 +53,6 @@ public class NetworkUtilities {
             Log.e(TAG, "There is network connection. Getting data from network");
 
             Uri builtUri = Uri.parse(context.getString(R.string.recipe_URL));
-            URL url = getUrl(builtUri);
             try {
                 jsonText = getResponseFromHttpUrl(getUrl(builtUri), context);
 
@@ -76,6 +75,8 @@ public class NetworkUtilities {
         return JsonUtilities.parseRecipeJson(jsonText);
 
     }
+
+    /*
 
     public static String getBitmapString(String fileUrl) {
         String bitmapString = null;
@@ -108,6 +109,7 @@ public class NetworkUtilities {
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
     }
 
+
     public static Bitmap decodeBase64(String input)
     {
         if(input == null || input.isEmpty())
@@ -131,6 +133,7 @@ public class NetworkUtilities {
             return null;
         }
     }
+      */
 
     private static String readLocalFile(Context context) {
         BufferedReader reader = null;

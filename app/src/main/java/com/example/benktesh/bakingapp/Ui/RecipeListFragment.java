@@ -17,12 +17,6 @@ public class RecipeListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        View rootView = inflater.inflate(R.layout.fragment_step_list, container, false);
-
-        //TextView tv = rootView.findViewById(R.id.ingredient_measure_quantity);
-        //tv.setText("HELLO BENKTESH");
-        return rootView;
+        return inflater.inflate(R.layout.fragment_step_list, container, false);
     }
 }

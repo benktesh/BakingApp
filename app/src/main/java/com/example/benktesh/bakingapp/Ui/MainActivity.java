@@ -30,11 +30,6 @@ public class MainActivity extends AppCompatActivity implements OnRecipeClickList
 
     @Override
     public void onRecipeSelected(Recipe recipe) {
-        //Toast.makeText(getApplicationContext(), "hello clicked " + recipe.name, Toast.LENGTH_LONG).show();
-
-        // Put this information in a Bundle and attach it to an Intent that will launch an AndroidMeActivity
-        Bundle b = new Bundle();
-        // Attach the Bundle to an intent
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, BakingAppWidgetProvider.class));
@@ -43,9 +38,5 @@ public class MainActivity extends AppCompatActivity implements OnRecipeClickList
         Intent intent = new Intent(this, RecipeActivity.class);
         intent.putExtra(CURRENT_RECIPE, recipe);
         startActivity(intent);
-
-
     }
-
-
 }

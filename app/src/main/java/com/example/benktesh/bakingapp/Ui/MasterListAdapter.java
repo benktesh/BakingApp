@@ -60,9 +60,6 @@ class MasterListAdapter extends BaseAdapter {
      */
     public View getView(final int position, View convertView, ViewGroup parent) {
         TextView view;
-        View gridView;
-        // if (convertView == null) {
-
 
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View viewMyLayout = inflater.inflate(R.layout.recipe_card, null);
