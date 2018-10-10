@@ -17,7 +17,8 @@
         android:gravity="center_horizontal"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        tools:text="Benktesh" />
+        tools:text="Benktesh"
+        android:contentDescription="@string/receipe_card_image_content_description" />
 
     <TextView
         android:id="@+id/tv_recipe_card"
