@@ -14,7 +14,7 @@ import com.example.benktesh.bakingapp.Utils.BakingAppWidgetProvider;
 
 public class MainActivity extends AppCompatActivity implements OnRecipeClickListener {
 
-    private final String TAG = MainActivity.class.getSimpleName();
+    // private final String TAG = MainActivity.class.getSimpleName();
 
     public static final String CURRENT_RECIPE = "RECIPE";
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:background="@drawable/receipe_card_border"
+    android:background="@drawable/reciepe_card_border"
     android:orientation="vertical">
 
     <ImageView

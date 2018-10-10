@@ -1,6 +1,5 @@
 package com.example.benktesh.bakingapp.Model;
 
-import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -14,8 +13,6 @@ public class Recipe implements Parcelable {
     public List<Step> steps;
     public int servings;
     public String image;
-    public String imageBitMapString;
-    public Bitmap thumbnail;
 
     private Recipe(Parcel in) {
         id = in.readInt();
@@ -66,7 +63,7 @@ public class Recipe implements Parcelable {
 
             for (Ingredient ing : ingredients) {
                 index++;
-                if(result.length() > 0) {
+                if (result.length() > 0) {
                     result = result + ", ";
                 }
                 result = result + ing.ingredient + " - " +
@@ -83,10 +80,10 @@ public class Recipe implements Parcelable {
 
     public String getIngredientsForWidget() {
 
-        if(ingredients == null || ingredients.size() <= 0 )
+        if (ingredients == null || ingredients.size() <= 0)
             return "";
         String result = "";
-        for(Ingredient ing: ingredients) {
+        for (Ingredient ing : ingredients) {
             result = result + " " + ing.ingredient + " (" + String.valueOf(ing.quantity) + " " + ing.measure + "); ";
         }
         return result;

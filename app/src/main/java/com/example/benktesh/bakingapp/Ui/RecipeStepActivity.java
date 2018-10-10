@@ -12,7 +12,6 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 
 import java.util.ArrayList;
 
-import static com.example.benktesh.bakingapp.Utils.Helper.CURRENT_STEP_RECIPE;
 import static com.example.benktesh.bakingapp.Utils.Helper.STEPS;
 import static com.example.benktesh.bakingapp.Utils.Helper.STEP_INDEX;
 
@@ -44,9 +43,7 @@ public class RecipeStepActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int mStepIndex = intent.getIntExtra(STEP_INDEX, 0);
-        String mTitle = intent.getStringExtra(CURRENT_STEP_RECIPE);
         ArrayList<Step> mSteps = intent.getParcelableArrayListExtra(STEPS);
-        Step mStep = mSteps.get(mStepIndex);
 
         if (savedInstanceState == null) {
             Log.e(TAG, "onCreate: savedInstanceState is null");

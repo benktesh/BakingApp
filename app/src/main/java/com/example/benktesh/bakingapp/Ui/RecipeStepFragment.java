@@ -49,8 +49,6 @@ public class RecipeStepFragment extends Fragment implements View.OnClickListener
 
         mPlayerView = mRootView.findViewById(R.id.playerView);
 
-        Log.d(TAG, "onCreateView is step null?: " + mStep == null ? " YES" : " NO");
-
         if (mStep != null) {
             initializePlayer();
         }

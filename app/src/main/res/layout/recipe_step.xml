@@ -11,7 +11,7 @@
         android:id="@+id/tv_step_short_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/receipe_card_border"
+        android:background="@drawable/reciepe_card_border"
         android:layout_margin="@dimen/default_margin"
         android:padding="@dimen/default_padding"
         tools:text="Content of the review" />

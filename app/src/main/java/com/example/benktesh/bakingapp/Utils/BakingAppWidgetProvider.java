@@ -21,7 +21,7 @@ import static com.example.benktesh.bakingapp.Ui.MainActivity.CURRENT_RECIPE;
  */
 public class BakingAppWidgetProvider extends AppWidgetProvider {
 
-    private static String TAG = BakingAppWidgetProvider.class.getSimpleName();
+    private static final String TAG = BakingAppWidgetProvider.class.getSimpleName();
 
     public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                        int[] appWidgetIds, Recipe recipe) {

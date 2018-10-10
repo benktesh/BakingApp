@@ -44,7 +44,7 @@ public class NetworkUtilities {
 
         String jsonText = null;
 
-        if (!isOnline(context) && false) {
+        if (!isOnline(context)) {
             Log.e(TAG, "There is no network connection. Using local file");
             jsonText = readLocalFile(context);
 
@@ -91,13 +91,13 @@ public class NetworkUtilities {
             bitmapString = encodeToBase64(temp);
 
         } catch (IOException e) {
-            Log.e(TAG, "getMap:" + e.getStackTrace());
+            Log.e(TAG, "getMap:" + Arrays.toString(e.getStackTrace()));
         }
         return bitmapString;
     }
 
 
-    public static String encodeToBase64(Bitmap image)
+    private static String encodeToBase64(Bitmap image)
     {
         if(image == null)
             return null;

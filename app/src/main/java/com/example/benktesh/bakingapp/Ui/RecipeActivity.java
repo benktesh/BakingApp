@@ -16,7 +16,6 @@ import com.example.benktesh.bakingapp.Model.Recipe;
 import com.example.benktesh.bakingapp.Model.Step;
 import com.example.benktesh.bakingapp.R;
 import com.example.benktesh.bakingapp.Utils.Helper;
-import com.example.benktesh.bakingapp.databinding.ActivityRecipeBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +25,6 @@ import static com.example.benktesh.bakingapp.Ui.MainActivity.CURRENT_RECIPE;
 public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapter.ListStepClickListener {
 
     private final String TAG = RecipeActivity.class.getSimpleName();
-
-    private ActivityRecipeBinding mBinding;
-
     private Recipe mRecipe;
     private String mRecipeName;
     private boolean mHasTwoPanes = false;
@@ -37,22 +33,19 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
     protected void onCreate(Bundle savedInstanceState) {
         //public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Log.d(TAG, "Creating ReceipeActivity");
+        Log.d(TAG, "Creating RecipeActivity");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        //mBinding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
-
         Intent intent = getIntent();
-
 
         mRecipe = intent.getParcelableExtra("RECIPE");
 
         Log.d(TAG, "Received Recipe: " + mRecipe != null ? mRecipe.name : "Empty");
         mRecipeName = mRecipe == null ? "" : mRecipe.name;
 
-        List<Ingredient> ingredient =mRecipe != null ? mRecipe.ingredients : null;
-        List<Step> steps  = mRecipe != null ? mRecipe.steps : null;
+        List<Ingredient> ingredient = mRecipe != null ? mRecipe.ingredients : null;
+        List<Step> steps = mRecipe != null ? mRecipe.steps : null;
 
 
         Log.d(TAG, "Before loading step_detail_container");
@@ -87,8 +80,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         } catch (Exception ex) {
             Log.e(TAG, ex.getMessage());
         }
-
-        Log.d(TAG, "Creating ReceipeActivity");
+        Log.d(TAG, "Exiting RecipeActivity");
     }
 
     /**
@@ -107,8 +99,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeStepAdapt
         setTitle(mRecipeName);
         TextView measureQantity = findViewById(R.id.ingredient_measure_quantity);
         measureQantity.setText(mRecipe.getIngredient());
-        //TODO Make mBinding to Work
-        //mBinding.ingredientMeasureQuantity.setText(mRecipe.getIngredient());
         if (mHasTwoPanes) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             RecipeStepFragment recipeStepFragment = new RecipeStepFragment();
