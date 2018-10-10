@@ -93,7 +93,7 @@ public class MasterListFragment extends Fragment {
     }
 
 
-    class NetworkTaskAsync extends AsyncTask<Void, Void, ArrayList<Recipe>> {
+    class  NetworkTaskAsync extends AsyncTask<Void, Void, ArrayList<Recipe>> {
 
 
         @Override
